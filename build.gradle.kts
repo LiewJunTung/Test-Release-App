@@ -23,7 +23,7 @@ release {
     tagCommitMessage = "ci: creating tag: "
     newVersionCommitMessage = "ci: new version commit: "
     versionPatterns = mapOf(
-        """(\d+)\.(\d+)\.(\d+)\.(\d+)""" to KotlinClosure2<java.util.regex.Matcher, Project, String>({ matcher, _ ->
+        """(\d+)\.(\d+)\.(\d+)\+(\d+)""" to KotlinClosure2<java.util.regex.Matcher, Project, String>({ matcher, _ ->
             matcher.replaceAll("${(matcher.group(1))}.${(matcher.group(2))}.${(matcher.group(3).toInt() + 1)}.${(matcher.group(4).toInt() + 1)}") })
     )
     failOnUpdateNeeded = false

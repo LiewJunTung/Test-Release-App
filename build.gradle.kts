@@ -24,7 +24,7 @@ release {
     tagCommitMessage = "ci: creating tag: "
     newVersionCommitMessage = "ci: new version commit: "
     versionPatterns = mapOf(
-        """[.]*\.(\d+)\.(\d+)$""" to KotlinClosure2<java.util.regex.Matcher, Project, String>({ matcher, project ->
+        """[.]*\.(\d+)\.(\d+)-SNAPSHOT""" to KotlinClosure2<java.util.regex.Matcher, Project, String>({ matcher, project ->
             matcher.replaceAll(".${(matcher.group(0)[1] + 1)}.${(matcher.group(0)[2] + 1)}")
         })
     )

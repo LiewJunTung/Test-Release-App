@@ -18,7 +18,6 @@ dependencies {
 fun ReleaseExtension.git(configure: GitAdapter.GitConfig.() -> Unit) = (getProperty("git") as GitAdapter.GitConfig).configure()
 
 release {
-    versionPropertyFile = "../gradle.properties"
     failOnSnapshotDependencies = false
 
     preTagCommitMessage = "ci: creating tag: "

@@ -6,7 +6,6 @@ plugins {
 }
 
 group = "org.example"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -19,14 +18,12 @@ fun ReleaseExtension.git(configure: GitAdapter.GitConfig.() -> Unit) = (getPrope
 
 release {
     failOnSnapshotDependencies = false
-
+    failOnCommitNeeded = false
     preTagCommitMessage = "ci: creating tag: "
     tagCommitMessage = "ci: creating tag: "
     newVersionCommitMessage = "ci: new version commit: "
     versionPatterns = mapOf(
-        """.*\.(\d+)\.(\d+)-SNAPSHOT""" to KotlinClosure2<java.util.regex.Matcher, Project, String>({ matcher, project ->
-            matcher.replaceAll(".${(matcher.group(0)[1])}.${(matcher.group(1)[1] + 1)}.${(matcher.group(2)[1] + 1)}")
-        })
+        """(\d+)\.(\d+)\.(\d+)\.(\d+)-SNAPSHOT""" to KotlinClosure2<java.util.regex.Matcher, Project, String>({ matcher, _ -> matcher.replaceAll("${(matcher.group(1))}.${(matcher.group(2))}.${(matcher.group(3) + 1)}.${(matcher.group(4) + 1)}") })
     )
     failOnUpdateNeeded = false
     git {

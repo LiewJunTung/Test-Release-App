@@ -19,6 +19,7 @@ fun ReleaseExtension.git(configure: GitAdapter.GitConfig.() -> Unit) = (getPrope
 release {
     failOnSnapshotDependencies = false
     failOnCommitNeeded = false
+    tagTemplate = "orange-"+"\$version"
     preTagCommitMessage = "ci: creating tag: "
     tagCommitMessage = "ci: creating tag: "
     newVersionCommitMessage = "ci: new version commit: "
